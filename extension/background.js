@@ -11,7 +11,7 @@ let port = null
 let isHostUnavailable = false
 let selectionVersion = 0
 
-void browser.browserAction.disable()
+browser.browserAction.disable()
 browser.browserAction.onClicked.addListener(handleClick)
 browser.tabs.onCreated.addListener(observeTab)
 browser.tabs.onUpdated.addListener((_id, _changes, tab) => observeTab(tab), {
@@ -23,7 +23,7 @@ browser.tabs.onDetached.addListener((tabId) => {
   disableToolbar(tabId)
 })
 browser.tabs.onAttached.addListener(refreshTab)
-void initializeToolbar()
+initializeToolbar()
 
 async function initializeToolbar() {
   const tabs = await browser.tabs.query({
@@ -234,7 +234,7 @@ function handleHostMessage(message) {
     pairedTabs.set(id, target)
     renderAllToolbars()
   } else if (type === "selected" && pairedTabs.has(id)) {
-    void showPairedTab(id)
+    showPairedTab(id)
   } else if ((type === "expired" || type === "forgotten") && pending?.id === id) {
     pending.target.didExpire = type === "expired"
     clearPending()
@@ -320,7 +320,7 @@ function disableToolbar(tabId) {
 }
 
 function ignoreClosedTab(operation) {
-  void operation.catch(() => {
+  operation.catch(() => {
     // The tab can close before Firefox applies its toolbar or selection update.
   })
 }
