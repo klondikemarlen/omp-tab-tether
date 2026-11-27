@@ -2,7 +2,7 @@
 
 lint:
 	ruff check --no-cache install.py host tests
-	biome lint --error-on-warnings --only=correctness --only=suspicious extension tests
+	biome lint --error-on-warnings extension tests
 
 test:
 	PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'

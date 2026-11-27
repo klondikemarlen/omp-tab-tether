@@ -13,6 +13,8 @@ Use Firefox, distro-installed `/usr/bin/ptyxis`, and a desktop exposing Ptyxis t
 
 Pairs live in memory. Closing or leaving the paired PR, restarting the host, or reloading the add-on can require pairing again. An unpaired or ambiguous terminal does nothing. If two browser windows overlap, bring the relevant Firefox window into view yourself: Tether deliberately does not raise windows.
 
+The toolbar badge shows `?` while waiting, `ON` when paired, or `!` after an error. Hover over the button for the reason. Click again on a waiting tab to cancel; after an error, click to retry. Only one tab can wait for a terminal at a time.
+
 ## What crosses the boundary
 
 The Firefox extension recognizes GitHub PR URLs and keeps their tab IDs in the browser. The host observes window/terminal identity and focus through accessibility metadata. Native messages carry pairing IDs, not URLs, page content, terminal output, or keystrokes. No server, credentials, browsing history, or persistent pair database is required.
@@ -20,3 +22,7 @@ The Firefox extension recognizes GitHub PR URLs and keeps their tab IDs in the b
 ## Update or remove
 
 To update, rerun the installer from the desired revision and reload the temporary add-on. To remove it, click **Remove** in `about:debugging`, delete `~/.mozilla/native-messaging-hosts/org.omp.tab_tether.json`, and remove the two installed files (`tab_tether.py` and `tab-tether.xpi`) under `${XDG_DATA_HOME:-$HOME/.local/share}/omp-tab-tether/`. This host has its own registration; other Firefox hosts need no changes.
+
+## Development checks
+
+Run `make test` with system Python and Node.js. `make lint` checks Python with Ruff and JavaScript with Biome; put `ruff` (0.14.6) and `biome` (2.3.8) on `PATH`. Neither tool is installed on a user's machine by `install.py`. See the [changelog](CHANGELOG.md) for the preview scope.

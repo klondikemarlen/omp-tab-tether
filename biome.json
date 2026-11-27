@@ -1,0 +1,25 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+  "linter": {
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUndeclaredVariables": "error"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["extension/**/*.js"],
+      "javascript": {
+        "globals": ["browser"]
+      }
+    },
+    {
+      "includes": ["tests/**/*.cjs"],
+      "javascript": {
+        "globals": ["__dirname", "require"]
+      }
+    }
+  ]
+}
