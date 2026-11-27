@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+package_root := debian/omp-tab-tether
+xpi := debian/tab-tether.xpi
+
+# The application Makefile has lint as its default target, not build.
+%:
+	dh $@ --buildsystem=none
+
+override_dh_auto_build:
+	/usr/bin/python3 debian/build-xpi.py $(xpi)
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+	$(MAKE) test
+endif
+
+override_dh_auto_install:
+	install -D -m 0755 host/tab_tether.py $(package_root)/usr/lib/omp-tab-tether/tab_tether.py
+	install -D -m 0644 debian/org.omp.tab_tether.json $(package_root)/usr/lib/mozilla/native-messaging-hosts/org.omp.tab_tether.json
+	install -D -m 0644 $(xpi) $(package_root)/usr/share/omp-tab-tether/tab-tether.xpi

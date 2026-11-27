@@ -1,0 +1,9 @@
+{
+  "name": "org.omp.tab_tether",
+  "description": "Observe explicitly paired Ptyxis terminals",
+  "path": "/usr/lib/omp-tab-tether/tab_tether.py",
+  "type": "stdio",
+  "allowed_extensions": [
+    "tab-tether@klondikemarlen.github.io"
+  ]
+}
