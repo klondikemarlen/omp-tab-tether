@@ -25,4 +25,4 @@ To update, rerun the installer from the desired revision and reload the temporar
 
 ## Development checks
 
-Run `make test` with system Python and Node.js. `make lint` checks Python with Ruff and JavaScript with Biome; put `ruff` (0.14.6) and `biome` (2.3.8) on `PATH`. Neither tool is installed on a user's machine by `install.py`. See the [changelog](CHANGELOG.md) for the preview scope.
+Run `make test` with system Python and Node.js. `make lint` checks Python with Ruff and JavaScript with Oxlint; put `ruff` (0.14.6) and `oxlint` (1.33.0) on `PATH`. Neither tool is installed by `install.py`. See the [changelog](CHANGELOG.md) for the preview scope.

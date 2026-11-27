@@ -1,0 +1,18 @@
+{
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "no-undef": "error"
+  },
+  "overrides": [
+    {
+      "files": ["extension/*.js"],
+      "env": { "browser": true, "webextensions": true }
+    },
+    {
+      "files": ["tests/*.cjs"],
+      "env": { "node": true }
+    }
+  ]
+}

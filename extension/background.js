@@ -1,4 +1,3 @@
-// biome-ignore lint/suspicious/noRedundantUseStrict: Firefox loads this background script without ESM.
 "use strict"
 
 const github = "https://github.com"
