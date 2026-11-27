@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "OMP Tab Tether",
+  "version": "0.1.0",
+  "description": "Show a paired GitHub pull request tab when its Ptyxis terminal is selected.",
+  "permissions": [
+    "https://github.com/*",
+    "nativeMessaging"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tab-tether@klondikemarlen.github.io",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_area": "navbar",
+    "default_title": "OMP Tab Tether: Open a GitHub pull request to pair"
+  }
+}
