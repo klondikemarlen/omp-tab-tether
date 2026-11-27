@@ -1,0 +1,5 @@
+omp-tab-tether (0.1.0+ppa1) resolute; urgency=medium
+
+  * Package the Firefox native messaging host and unsigned preview add-on.
+
+ -- Marlen Brunner <klondikemarlen@gmail.com>  Fri, 27 Nov 2026 13:40:44 -0700

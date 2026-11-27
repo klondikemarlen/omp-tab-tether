@@ -2,12 +2,32 @@
 
 Show the matching GitHub pull request in Firefox when you switch to a paired Ptyxis terminal. Tether selects the **existing browser tab**: it does not navigate, reload the diff, focus the Firefox window, or move keyboard input. Selecting a PR does not switch terminals.
 
-## Try it on Linux
+## Install the preview
 
 Use Firefox, distro-installed `/usr/bin/ptyxis`, and a desktop exposing Ptyxis through AT-SPI (GNOME Wayland is the initial target). The native host uses `/usr/bin/python3`, PyGObject and the Atspi 2.0 typelib; on Ubuntu the latter packages are `python3-gi` and `gir1.2-atspi-2.0`. No OMP plugin, browser login or terminal configuration is required.
 
-1. From the repository root, run `./install.py` as your desktop user. For Snap or Flatpak Firefox, use `./install.py --sandboxed` with your distribution's [native messaging proxy](https://github.com/flatpak/xdg-native-messaging-proxy) already installed. Review that project's security notes before enabling the proxy.
-2. Open `about:debugging#/runtime/this-firefox`, choose **Load Temporary Add-on**, and select the `tab-tether.xpi` printed by the installer. Pin Tab Tether from Firefox's Extensions menu for easy access. This is an unsigned preview: Firefox removes a temporary add-on on restart.
+**Ubuntu 26.04 (Resolute).** Once `omp-tab-tether` is published in the [dedicated PPA](https://launchpad.net/~klondikemarlen/+archive/ubuntu/omp-tab-tether), install it with:
+
+```sh
+sudo add-apt-repository ppa:klondikemarlen/omp-tab-tether
+sudo apt install omp-tab-tether
+```
+
+The package owns the native host, Firefox system manifest, and `/usr/share/omp-tab-tether/tab-tether.xpi`. It does not change Firefox profiles or load the extension. Snap and Flatpak Firefox require a [native messaging proxy](https://github.com/flatpak/xdg-native-messaging-proxy); review its security notes before installing `xdg-native-messaging-proxy`. A portal permission prompt is separate from package installation.
+
+**From source instead.** Run `./install.py` as your desktop user, or `./install.py --sandboxed` for sandboxed Firefox. Use the XPI path printed by the installer. If migrating from this installation to apt, remove the per-user preview first (see below): a user manifest can shadow the packaged system manifest.
+
+## Pair tabs in Firefox
+
+1. Open `about:debugging#/runtime/this-firefox`, choose **Load Temporary Add-on**, and select `tab-tether.xpi`. If sandboxed Firefox cannot see the packaged path, copy the XPI to a new directory it can read:
+
+   ```sh
+   preview=$(mktemp -d "$HOME/tab-tether-preview.XXXXXXXX")
+   cp /usr/share/omp-tab-tether/tab-tether.xpi "$preview/"
+   printf '%s\n' "$preview/tab-tether.xpi"
+   ```
+
+2. Pin Tab Tether from Firefox's Extensions menu for easy access. This extension is unsigned: Firefox removes a temporary add-on on restart.
 3. Open a GitHub PR in Firefox. Click the Tab Tether toolbar button on that tab, then focus the intended Ptyxis terminal within 30 seconds. If Firefox asks whether to allow the native host, review the request first; retry pairing if it expires.
 4. Repeat for a second PR and terminal. Switch between those terminals. Each paired PR becomes the selected tab in its own Firefox window. Clicking the toolbar button on a paired PR removes its pair.
 
@@ -21,4 +41,7 @@ The Firefox extension recognizes GitHub PR URLs and keeps their tab IDs in the b
 
 ## Update or remove
 
-To update, rerun the installer from the desired revision and reload the temporary add-on. To remove it, click **Remove** in `about:debugging`, delete `~/.mozilla/native-messaging-hosts/org.omp.tab_tether.json`, and remove the two installed files (`tab_tether.py` and `tab-tether.xpi`) under `${XDG_DATA_HOME:-$HOME/.local/share}/omp-tab-tether/`. This host has its own registration; other Firefox hosts need no changes.
+Remove the temporary add-on in `about:debugging` before uninstalling either version. If you copied the XPI for sandbox access, remove that copy and its now-empty directory. Firefox manages any portal permission separately; apt does not grant or revoke it.
+
+- **Apt installation:** `sudo apt purge omp-tab-tether` removes the package and its host registration. To also stop receiving updates from the archive, run `sudo add-apt-repository --remove ppa:klondikemarlen/omp-tab-tether`. Removing the archive alone does not uninstall the package. After an apt upgrade, refresh any sandbox copy and reload the temporary add-on.
+- **Source installation:** remove `~/.mozilla/native-messaging-hosts/org.omp.tab_tether.json` and the two files `tab_tether.py` and `tab-tether.xpi` under `${XDG_DATA_HOME:-$HOME/.local/share}/omp-tab-tether/`. Leave other hosts and their registrations alone. To update instead, rerun the installer and reload the temporary add-on.

@@ -1,0 +1,31 @@
+Source: omp-tab-tether
+Section: utils
+Priority: optional
+Maintainer: Marlen Brunner <klondikemarlen@gmail.com>
+Build-Depends: debhelper-compat (= 13),
+               gir1.2-atspi-2.0 <!nocheck>,
+               nodejs <!nocheck>,
+               python3,
+               python3-gi <!nocheck>
+Standards-Version: 4.7.3
+Rules-Requires-Root: no
+Homepage: https://github.com/klondikemarlen/omp-tab-tether
+Vcs-Git: https://github.com/klondikemarlen/omp-tab-tether.git
+Vcs-Browser: https://github.com/klondikemarlen/omp-tab-tether
+
+Package: omp-tab-tether
+Architecture: all
+Depends: at-spi2-core,
+         gir1.2-atspi-2.0,
+         ptyxis,
+         python3,
+         python3-gi,
+         ${misc:Depends}
+Suggests: xdg-native-messaging-proxy
+Description: pair Firefox pull request tabs with Ptyxis terminals
+ Selecting a paired Ptyxis terminal selects its existing pull request tab
+ without navigating Firefox or moving keyboard focus.
+ .
+ This package provides the Firefox native messaging host and an unsigned
+ add-on for temporary loading from about:debugging. For sandboxed Firefox,
+ install the optional native messaging proxy separately.
