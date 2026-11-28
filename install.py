@@ -14,6 +14,13 @@ ROOT = Path(__file__).resolve().parent
 HOST = "org.omp.tab_tether"
 EXTENSION_ID = "tab-tether@klondikemarlen.github.io"
 
+# Keep this allowlist in sync with debian/build-xpi.py.
+EXTENSION_FILES = (
+    "manifest.json",
+    "background.js",
+    "icons/tether.svg",
+)
+
 @contextmanager
 def installation_file(destination, mode):
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -53,7 +60,7 @@ def install(sandboxed):
     }
     with installation_file(addon, 0o600) as staged:
         with ZipFile(staged, "w", ZIP_DEFLATED) as archive:
-            for filename in ("manifest.json", "background.js"):
+            for filename in EXTENSION_FILES:
                 archive.write(ROOT / "extension" / filename, filename)
 
     with installation_file(executable, 0o700) as staged:

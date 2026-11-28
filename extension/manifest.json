@@ -3,6 +3,11 @@
   "name": "OMP Tab Tether",
   "version": "0.1.0",
   "description": "Show a paired GitHub pull request tab when its Ptyxis terminal is selected.",
+  "icons": {
+    "32": "icons/tether.svg",
+    "64": "icons/tether.svg",
+    "128": "icons/tether.svg"
+  },
   "permissions": [
     "https://github.com/*",
     "nativeMessaging"
@@ -26,6 +31,7 @@
   },
   "browser_action": {
     "default_area": "navbar",
+    "default_icon": "icons/tether.svg",
     "default_title": "OMP Tab Tether: Open a GitHub pull request to pair"
   }
 }
