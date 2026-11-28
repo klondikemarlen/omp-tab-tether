@@ -3,6 +3,7 @@
 Pair Firefox pull request tabs with their corresponding Ptyxis terminals.
 
 - [Try the unsigned Linux preview](docs/linux-preview.md): prerequisites, pairing, privacy, and removal.
+- [Sign a future Firefox release](docs/firefox-signing.md): maintainer workflow for the listed add-on.
 - [Changelog](CHANGELOG.md)
 
 ## Development checks

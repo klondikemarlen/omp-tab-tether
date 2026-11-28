@@ -1,7 +1,7 @@
 .PHONY: lint test
 
 lint:
-	ruff check --no-fix --no-cache install.py host tests
+	ruff check --no-fix --no-cache install.py host scripts tests
 	oxlint --deny-warnings extension tests
 
 test:

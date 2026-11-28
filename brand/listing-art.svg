@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-labelledby="title description">
+  <title id="title">Two terminals. Two pull requests.</title>
+  <desc id="description">In two separate examples, selecting paired Ptyxis terminal A selects GitHub pull request 42 in Firefox; selecting terminal B selects pull request 57. The Firefox window is not raised, and keyboard focus does not move.</desc>
+  <defs>
+    <pattern id="grid" patternUnits="userSpaceOnUse" width="24" height="24">
+      <circle cx="1" cy="1" r="1" fill="#426067" opacity="0.5"/>
+    </pattern>
+    <g id="terminal">
+      <rect width="52" height="52" rx="12" fill="#24383B" stroke="#426067"/>
+      <path d="M14 17l9 9-9 9m15 0h9" fill="none" stroke="#70E8D6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="pull-request">
+      <path d="M3 9h21l7 8h18a3 3 0 0 1 3 3v26a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3z" fill="#FFB67E"/>
+      <path d="M20 23v14m12 0v-6a6 6 0 0 0-6-6" fill="none" stroke="#142126" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="20" cy="23" r="2.5" fill="#FFB67E" stroke="#142126" stroke-width="2"/>
+      <circle cx="20" cy="37" r="2.5" fill="#FFB67E" stroke="#142126" stroke-width="2"/>
+      <circle cx="32" cy="37" r="2.5" fill="#FFB67E" stroke="#142126" stroke-width="2"/>
+    </g>
+    <g id="signal">
+      <path d="M0 0h164l20 20h97m-10-10 10 10-10 10" fill="none" stroke="#70E6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle r="4" fill="#70E6D4"/>
+    </g>
+  </defs>
+
+  <path d="M0 0h1280v800H0z" fill="#F4EFE6"/>
+  <path d="M72 90h1136m-1136 641h1136" stroke="#9CABA3"/>
+  <rect x="72" y="49" width="10" height="10" rx="2" fill="#196558"/>
+  <g fill="#244E48" font-family="Noto Mono, monospace" font-size="16" letter-spacing="2">
+    <text x="98" y="61">OMP TAB TETHER</text>
+    <text x="1208" y="61" text-anchor="end">LINUX / FIREFOX</text>
+  </g>
+  <text fill="#142126" font-family="Noto Serif Display, serif" font-size="78" font-weight="700" letter-spacing="-2.5">
+    <tspan x="68" y="181">Two terminals.</tspan>
+    <tspan x="68" y="267">Two pull requests.</tspan>
+  </text>
+  <path d="M836 148h42" stroke="#C06A46" stroke-width="3"/>
+  <text fill="#244E48" font-family="Noto Sans, sans-serif" font-size="24">
+    <tspan x="836" y="189">Switch to a paired terminal.</tspan>
+    <tspan x="836" y="225">Firefox selects the matching</tspan>
+    <tspan x="836" y="261">GitHub pull request tab.</tspan>
+  </text>
+
+  <rect x="72" y="318" width="1136" height="380" rx="24" fill="#142126"/>
+  <rect x="96" y="342" width="1088" height="332" rx="10" fill="url(#grid)"/>
+  <path d="M110 401h1060m-1060 137h1060" stroke="#426067"/>
+
+  <g font-family="Noto Mono, monospace" font-size="16" letter-spacing="2">
+    <text x="210" y="380" fill="#70E6D4">YOU SELECT</text>
+    <text x="844" y="380" fill="#FFB67E">FIREFOX SELECTS</text>
+    <text x="110" y="476" fill="#B2C8C1">01</text>
+    <text x="110" y="613" fill="#B2C8C1">02</text>
+  </g>
+
+  <use href="#terminal" x="210" y="442"/>
+  <use href="#terminal" x="210" y="579"/>
+  <use href="#signal" x="494" y="457"/>
+  <use href="#signal" x="494" y="594"/>
+  <use href="#pull-request" x="844" y="438"/>
+  <use href="#pull-request" x="844" y="575"/>
+
+  <g fill="#F4EFE6" font-family="Noto Sans, sans-serif" font-weight="700" font-size="30">
+    <text x="282" y="469">Terminal A</text>
+    <text x="282" y="606">Terminal B</text>
+    <text x="916" y="469">PR #42</text>
+    <text x="916" y="606">PR #57</text>
+  </g>
+  <g fill="#B2C8C1" font-family="Noto Sans, sans-serif" font-size="17">
+    <text x="282" y="491">Ptyxis</text>
+    <text x="282" y="628">Ptyxis</text>
+    <text x="916" y="491">Existing GitHub tab</text>
+    <text x="916" y="628">Existing GitHub tab</text>
+  </g>
+
+  <g fill="#244E48" font-family="Noto Mono, monospace" font-size="15" letter-spacing="1">
+    <text x="72" y="766">FIREFOX STAYS WHERE IT IS. KEYBOARD FOCUS DOES NOT MOVE.</text>
+    <text x="1208" y="766" text-anchor="end">WORKFLOW DIAGRAM</text>
+  </g>
+</svg>
